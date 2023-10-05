@@ -25,6 +25,7 @@ def main():
         bg_color=image_props["image.bgcolor"],
         font=image_props["image.font"],
         font_size=image_props["image.font.size"],
+        font_color=image_props["image.font.color"],
         download_dir=directories_props["directories.downloded.images"],
         generated_image_dir=directories_props["directories.generated.images"],
     )

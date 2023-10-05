@@ -63,7 +63,7 @@ class NewsImageGenerator:
             image=text_box_bg,
             message=self._get_wrapped_text(news.title, font, FG_IMAGE_SIZE_WIDTH),
             font=font,
-            fontColor="black",
+            fontColor=self.props.font_color,
         )
 
         offset_x = 0
