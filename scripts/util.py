@@ -16,6 +16,11 @@ def download_file(url, download_dir=""):
     return path
 
 
+def create_dir(dirname):
+    print(dirname, " --- created")
+    os.makedirs(dirname)
+
+
 def remove_file(filename):
     os.remove(filename)
 
