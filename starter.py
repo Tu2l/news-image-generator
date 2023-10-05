@@ -2,6 +2,7 @@ from scripts.news_model import News, NewsEncoder
 from scripts.news_image_properties import NewsImageProperties
 from scripts.news_image_generator import NewsImageGenerator
 from collections import namedtuple
+import setup
 import configparser
 import json
 
@@ -15,6 +16,10 @@ def main():
     # init configurations
     config = configparser.ConfigParser()
     config.read(CONFIG_FILE_PATH)
+
+    validate_dir = config["Startup"]["validate.directories"]
+    if bool(validate_dir) == True:
+        setup.validate_directories()
 
     image_props = config["NewsImage"]
     directories_props = config["Directories"]
@@ -37,6 +42,17 @@ def main():
     f = open(directories_props["directories.news"] + "news.json")
     data = json.load(f)
     f.close()
+
+    print(
+        "---------------------------------------------------------------------------------------"
+    )
+    print(
+        "Generating images, output will be visible at - ",
+        image_props.generated_image_dir,
+    )
+    print(
+        "---------------------------------------------------------------------------------------"
+    )
 
     for i, data in enumerate(data):
         # news_json = json.dumps(data, indent=4, cls=NewsEncoder)
