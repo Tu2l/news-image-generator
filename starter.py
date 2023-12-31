@@ -58,7 +58,7 @@ def main():
         # news_json = json.dumps(data, indent=4, cls=NewsEncoder)
         # news = json.loads(news_json, object_hook=custom_news_decoder)
         news = News(
-            title=data["title"],
+            title=data["title"]+"...",
             image_url=data["imageUrl"],
             link=data["url"],
             timestamp=data["timestamp"],
@@ -67,6 +67,7 @@ def main():
         )
         print(i, news.title)
         generator_obj.generate_news_image(news=news)
+        break
 
 
 if __name__ == "__main__":
