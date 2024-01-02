@@ -2,8 +2,10 @@ from PIL import Image, ImageFont, ImageDraw, ImageFilter
 from string import Template
 from scripts.news_model import News
 from scripts.news_image_properties import NewsImageProperties
-import scripts.util as util
+import scripts.image_gradient_generator as gradient
+from scripts.image_gradient_generator import Rect
 
+import scripts.util as util
 
 class NewsImageGenerator:
     def __init__(self, props: NewsImageProperties):
@@ -139,6 +141,12 @@ class NewsImageGenerator:
             )
             + ".png"
         )
+       
+        color_palette = [(0, 0, 255), (0, 255, 0), (255, 0, 0)]
+        region = Rect(0, 0, FG_IMAGE_SIZE_WIDTH, FG_IMAGE_SIZE_HEIGHT)
+        draw = ImageDraw.Draw(image)
+        gradient.vert_gradient(draw, region, gradient.gradient_color, color_palette)
+
         image.save(image_name)
 
         util.remove_file(downloaded_filename)
