@@ -142,10 +142,11 @@ class NewsImageGenerator:
             + ".png"
         )
        
-        color_palette = [(0, 0, 255), (0, 255, 0), (255, 0, 0)]
-        region = Rect(0, 0, FG_IMAGE_SIZE_WIDTH, FG_IMAGE_SIZE_HEIGHT)
-        draw = ImageDraw.Draw(image)
-        gradient.vert_gradient(draw, region, gradient.gradient_color, color_palette)
+        #following code is responsible for adding gradient layer       
+        # color_palette = [(0, 0, 255), (0, 255, 0), (255, 0, 0)]
+        # _region = Rect(0, 0, FG_IMAGE_SIZE_WIDTH, FG_IMAGE_SIZE_HEIGHT)
+        # draw = ImageDraw.Draw(image)
+        # gradient.vert_gradient(draw, region, gradient.gradient_color, color_palette)
 
         image.save(image_name)
 
